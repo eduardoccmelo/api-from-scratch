@@ -65,7 +65,7 @@ app.get("/courses/:courseId/students", (req, res) => {
 
 app.get("/courses/:courseId/students/:studentId", (req, res) => {
   const { courseId, studentId } = req.params;
-  Student.find({ course: courseId, _id: studentId })
+  Student.findOne({ course: courseId, _id: studentId })
     .then((student) => {
       if (student) {
         console.log(student);
