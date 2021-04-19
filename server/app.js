@@ -84,15 +84,13 @@ app.get("/courses/:courseId/students/:studentId", (req, res) => {
 app.post("/courses", (req, res) => {
   Course.create(req.body)
     .then((newCourse) => {
-      if (newCourse.location === undefined) {
-        newCourse.location = "Remote";
-      }
       console.log(newCourse);
       res.status(201);
       res.json(newCourse);
     })
     .catch((error) => {
       console.log(error);
+      res.json(`${error._message}. Required field is missing`);
     });
 });
 

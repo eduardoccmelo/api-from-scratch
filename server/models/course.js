@@ -5,13 +5,13 @@ const CourseSchema = new Schema(
   {
     name: {
       type: String,
-      required: "Course name is required",
+      required: [true, "Course Name is required"],
     },
     type: {
       type: String,
-      required: "Course type is required",
+      required: [true, "Course Type is required"],
     },
-    location: String,
+    location: { type: String, default: "Remote" },
   },
   {
     versionKey: false,
