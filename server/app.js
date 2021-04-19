@@ -95,7 +95,11 @@ app.post("/courses", (req, res) => {
 });
 
 app.post("/courses/:courseId/students", (req, res) => {
-  Student.create(req.body)
+  Student.create({
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    course: req.params.courseId,
+  })
     .then((newStudent) => {
       console.log(newStudent);
       res.status(201);
